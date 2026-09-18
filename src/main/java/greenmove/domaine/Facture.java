@@ -1,15 +1,15 @@
-package greenmove;
+package greenmove.domaine;
 
-/** Facture émise à la fin d'une location. Montant en centimes d'euro. */
+/** Facture émise à la fin d'une location. */
 public class Facture {
 
     private final long locationId;
-    private final int montantCentimes;
+    private final Montant montant;
     private final String referencePaiement;
 
-    public Facture(long locationId, int montantCentimes, String referencePaiement) {
+    public Facture(long locationId, Montant montant, String referencePaiement) {
         this.locationId = locationId;
-        this.montantCentimes = montantCentimes;
+        this.montant = montant;
         this.referencePaiement = referencePaiement;
     }
 
@@ -17,8 +17,8 @@ public class Facture {
         return locationId;
     }
 
-    public int montantCentimes() {
-        return montantCentimes;
+    public Montant montant() {
+        return montant;
     }
 
     public String referencePaiement() {
@@ -28,7 +28,7 @@ public class Facture {
     @Override
     public String toString() {
         return "Facture{location=" + locationId
-                + ", montant=" + (montantCentimes / 100.0) + " €"
+                + ", montant=" + montant
                 + ", paiement=" + referencePaiement + "}";
     }
 }

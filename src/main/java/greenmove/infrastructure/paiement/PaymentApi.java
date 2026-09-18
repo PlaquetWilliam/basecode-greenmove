@@ -1,4 +1,4 @@
-package greenmove;
+package greenmove.infrastructure.paiement;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -11,9 +11,9 @@ import java.util.UUID;
  * Client du prestataire de paiement externe.
  *
  * <p>Son API change une à deux fois par an : le nom des champs, le format du
- * montant et l'URL ont déjà bougé deux fois depuis 2023. Aujourd'hui, cette
- * classe est appelée directement depuis {@link LocationService}, c'est-à-dire
- * depuis le code qui porte les règles métier.</p>
+ * montant et l'URL ont déjà bougé deux fois depuis 2023. Avant le refactoring, cette
+ * classe était appelée directement depuis le service de location, c'est-à-dire
+ * depuis le code qui portait les règles métier. Elle vit désormais dans l'infrastructure.</p>
  *
  * <p>Le mode hors ligne évite d'avoir besoin du réseau pendant le TP : il ne
  * change rien au problème de conception.</p>

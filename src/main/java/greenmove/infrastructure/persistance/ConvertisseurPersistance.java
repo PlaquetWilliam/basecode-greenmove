@@ -2,6 +2,7 @@ package greenmove.infrastructure.persistance;
 
 import greenmove.domaine.Facture;
 import greenmove.domaine.Location;
+import greenmove.domaine.MoyenPaiement;
 import greenmove.domaine.StatutLocation;
 import greenmove.domaine.TypeVehicule;
 import greenmove.domaine.Usager;
@@ -26,7 +27,8 @@ final class ConvertisseurPersistance {
     }
 
     static Usager versDomaine(LigneUsager ligne) {
-        return new Usager(ligne.id(), ligne.nom(), ligne.abonne(), ligne.moyenPaiement());
+        return new Usager(ligne.id(), ligne.nom(), ligne.abonne(),
+                MoyenPaiement.de(ligne.moyenPaiement()));
     }
 
     static LigneFacture versLigne(Facture facture, LocalDateTime emiseLe) {

@@ -1,15 +1,17 @@
 package greenmove.infrastructure.persistance;
 
 import greenmove.domaine.Facture;
+import greenmove.domaine.port.Factures;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 
-/** Accès JDBC à la table {@code facture}. */
-public class FactureRepositoryJdbc {
+/** Adapter JDBC du port {@link Factures} : la table {@code facture}. */
+public class FactureRepositoryJdbc implements Factures {
 
+    @Override
     public void enregistrer(Facture facture) {
         LigneFacture ligne = ConvertisseurPersistance.versLigne(facture, LocalDateTime.now());
         try (Connection connexion = ConnexionH2.ouvrir();

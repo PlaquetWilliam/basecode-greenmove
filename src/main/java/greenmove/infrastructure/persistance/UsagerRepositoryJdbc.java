@@ -1,15 +1,17 @@
 package greenmove.infrastructure.persistance;
 
 import greenmove.domaine.Usager;
+import greenmove.domaine.port.Usagers;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/** Accès JDBC à la table {@code usager}. */
-public class UsagerRepositoryJdbc {
+/** Adapter JDBC du port {@link Usagers} : la table {@code usager}. */
+public class UsagerRepositoryJdbc implements Usagers {
 
+    @Override
     public Usager trouverParId(long id) {
         try (Connection connexion = ConnexionH2.ouvrir();
              PreparedStatement select = connexion.prepareStatement(

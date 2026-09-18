@@ -6,9 +6,9 @@ public class Usager {
     private final long id;
     private final String nom;
     private final boolean abonne;
-    private final String moyenPaiement;
+    private final MoyenPaiement moyenPaiement;
 
-    public Usager(long id, String nom, boolean abonne, String moyenPaiement) {
+    public Usager(long id, String nom, boolean abonne, MoyenPaiement moyenPaiement) {
         this.id = id;
         this.nom = nom;
         this.abonne = abonne;
@@ -27,7 +27,7 @@ public class Usager {
         return abonne;
     }
 
-    public String moyenPaiement() {
+    public MoyenPaiement moyenPaiement() {
         return moyenPaiement;
     }
 }

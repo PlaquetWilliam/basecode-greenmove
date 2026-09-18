@@ -1,6 +1,7 @@
 package greenmove.infrastructure.persistance;
 
 import greenmove.domaine.Location;
+import greenmove.domaine.port.Locations;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,9 +9,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
-/** Accès JDBC à la table {@code location}. */
-public class LocationRepositoryJdbc {
+/** Adapter JDBC du port {@link Locations} : la table {@code location}. */
+public class LocationRepositoryJdbc implements Locations {
 
+    @Override
     public Location trouverParId(long id) {
         try (Connection connexion = ConnexionH2.ouvrir();
              PreparedStatement select = connexion.prepareStatement(
@@ -34,6 +36,7 @@ public class LocationRepositoryJdbc {
         }
     }
 
+    @Override
     public void enregistrerCloture(Location location) {
         try (Connection connexion = ConnexionH2.ouvrir();
              PreparedStatement cloture = connexion.prepareStatement(
